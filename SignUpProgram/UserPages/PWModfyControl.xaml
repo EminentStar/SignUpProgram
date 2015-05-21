@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="SignUpProgram.PWModfyControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="525">
+    <Grid x:Name="grid">
+        <Button x:Name="pwdChangeSuccess_btn" HorizontalAlignment="Left" Height="33" Margin="90,170,0,0" VerticalAlignment="Top" Width="36" Background="Transparent" BorderBrush="Transparent">
+            <StackPanel>
+                <Image Source="../img/signup.ico" Height="29" Width="33" RenderTransformOrigin="0.48,0.837" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="pwdChangeCancel_btn" HorizontalAlignment="Left" Height="33" Margin="192,170,0,0" VerticalAlignment="Top" Width="31" Background="Transparent" BorderBrush="Transparent" >
+            <StackPanel>
+                <Image Source="../img/back.ico" Height="29" Width="33" RenderTransformOrigin="0.48,0.837" />
+            </StackPanel>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="52,42,0,0" TextWrapping="Wrap" Text="현재 비밀번호" VerticalAlignment="Top" Width="94"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="52,70,0,0" TextWrapping="Wrap" Text="바뀔 비밀번호" VerticalAlignment="Top" Width="94"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="52,98,0,0" TextWrapping="Wrap" Text="비밀번호 확인" VerticalAlignment="Top" Width="94"/>
+        <PasswordBox x:Name="pwd_origin" HorizontalAlignment="Left" Height="23" Margin="160,42,0,0" VerticalAlignment="Top" Width="94" MaxLength="16" />
+        <PasswordBox x:Name="pwd_new" HorizontalAlignment="Left" Height="23" Margin="160,70,0,0" VerticalAlignment="Top" Width="94" MaxLength="16" />
+        <PasswordBox x:Name="pwd_new_re" HorizontalAlignment="Left" Height="23" Margin="160,98,0,0" VerticalAlignment="Top" Width="94" MaxLength="16" />
+
+    </Grid>
+</UserControl>

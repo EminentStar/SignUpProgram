@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="SignUpProgram.HomeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="525">
+    <Grid x:Name="grid">
+        <TextBlock HorizontalAlignment="Left" Height="30" Margin="23,10,0,0" TextWrapping="Wrap" Text="초기화면" VerticalAlignment="Top" Width="480"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="25,78,0,0" TextWrapping="Wrap" Text="아이디" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="25,133,0,0" TextWrapping="Wrap" Text="비밀번호" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="id" HorizontalAlignment="Left" Height="23" Margin="145,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="178" MaxLength="16" />
+        <PasswordBox x:Name="pwd" HorizontalAlignment="Left" Height="23" Margin="145,133,0,0" VerticalAlignment="Top" Width="178" MaxLength="16"/>
+        <Button x:Name="login_btn" HorizontalAlignment="Left" Height="62" Margin="382,78,0,0" VerticalAlignment="Top" Width="57" Background="Transparent" BorderBrush="Transparent" >
+            <StackPanel>
+                <Image Source="../img/login.ico" Height="59" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="sign_up" HorizontalAlignment="Left" Height="62" Margin="82,183,0,0" VerticalAlignment="Top" Width="63" Background="Transparent" BorderBrush="Transparent">
+            <StackPanel>
+                <Image Source="../img/signup2.ico" Height="59" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="search_id" HorizontalAlignment="Left" Height="62" Margin="270,183,0,0" VerticalAlignment="Top" Width="53" Background="Transparent" BorderBrush="Transparent">
+            <StackPanel>
+                <Image Source="../img/search.ico" Height="59" />
+            </StackPanel>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="82,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63"><Run Text=" "/><Run Text="회원가입"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="260,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Text="아이디 찾기"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="382,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"><Run Text="   "/><Run Text="로그인"/></TextBlock>
+
+    </Grid>
+</UserControl>

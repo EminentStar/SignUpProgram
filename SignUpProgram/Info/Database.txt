@@ -1,0 +1,12 @@
+﻿string connectionString = @"server=novak.sejong.ac.kr;database=Junkyu;uid=Junkyu;pwd=qkrwnsrb1";
+con = new SqlConnection(connectionString);
+
+"CREATE TABLE Users (user_id nvarchar(30), 
+					 user_name nvarchar(30), 
+					 user_passwd nvarchar(30), 
+					 user_phone nvarchar(30), 
+					 user_email nvarchar(100), 
+					 user_admin bit, 
+					 check_signed_in bit, 
+					 PRIMARY KEY(user_id) 
+					 );";
