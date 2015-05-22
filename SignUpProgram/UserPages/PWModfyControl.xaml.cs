@@ -54,7 +54,7 @@ namespace SignUpProgram
             else if (rv) // if orginal password was correct
             {
                 MessageBox.Show("비밀번호변경에 성공하였습니다.");
-                dbProcessor.UpdatePassword(con, pwdInfo.GetInfo());
+                dbProcessor.UpdatePassword(con, paramID, pwdInfo.GetInfo());
             }
             else
             {

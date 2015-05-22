@@ -6,7 +6,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="525">
     <Grid x:Name="grid">
-        <TextBlock HorizontalAlignment="Left" Height="30" Margin="23,10,0,0" TextWrapping="Wrap" Text="초기화면" VerticalAlignment="Top" Width="480"/>
         <TextBlock HorizontalAlignment="Left" Height="23" Margin="25,78,0,0" TextWrapping="Wrap" Text="아이디" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Height="23" Margin="25,133,0,0" TextWrapping="Wrap" Text="비밀번호" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="id" HorizontalAlignment="Left" Height="23" Margin="145,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="178" MaxLength="16" />

@@ -5,15 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="525">
-    <Grid>
+    <Grid x:Name="grid">
         <TextBlock HorizontalAlignment="Left" Height="25" Margin="141,26,0,0" TextWrapping="Wrap" Text="아이디 찾기" VerticalAlignment="Top" Width="169"/>
         <TextBlock HorizontalAlignment="Left" Height="23" Margin="33,79,0,0" TextWrapping="Wrap" Text="이름" VerticalAlignment="Top" Width="150"/>
-        <TextBlock HorizontalAlignment="Left" Height="23" Margin="33,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Text="가입시 등록한 이메일 주소"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="33,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Text="이메일 주소"/>
         <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="188,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
         <TextBox x:Name="email" HorizontalAlignment="Left" Height="23" Margin="188,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <Button x:Name="search_btn" Content="찾기" HorizontalAlignment="Left" Height="30" Margin="33,150,0,0" VerticalAlignment="Top" Width="90"/>
-        <Button x:Name="search_back_btn" Content="뒤로가기" HorizontalAlignment="Left" Height="30" Margin="248,150,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button x:Name="search_btn" HorizontalAlignment="Left" Height="30" Margin="33,150,0,0" VerticalAlignment="Top" Width="90" Background="Transparent" BorderBrush="Transparent" >
+            <StackPanel>
+                <Image Source="../img/signup.ico" Height="24" Width="77" RenderTransformOrigin="0.48,0.837" />
+            </StackPanel>
+        </Button>
 
-
+        <Button x:Name="search_back_btn" HorizontalAlignment="Left" Height="30" Margin="248,150,0,0" VerticalAlignment="Top" Width="90" Background="Transparent" BorderBrush="Transparent"  >
+            <StackPanel>
+                <Image Source="../img/back.ico" Height="24" Width="77" RenderTransformOrigin="0.48,0.837" />
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>

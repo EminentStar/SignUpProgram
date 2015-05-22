@@ -32,6 +32,7 @@ namespace SignUpProgram
         ModifyControl modifyCtl = new ModifyControl();
         PWCheckControl pwdCheckCtl = new PWCheckControl();
         PWModfyControl pwdModifyCtl = new PWModfyControl();
+        SearchControl searchCtl = new SearchControl();
         GlobalClasses gClasses = GlobalClasses.GetInstance();
 
         SqlConnection con;
@@ -39,6 +40,8 @@ namespace SignUpProgram
         public MainWindow()
         {
             InitializeComponent();
+            
+
 
             string connectionString = @"server=novak.sejong.ac.kr;database=Junkyu;uid=Junkyu;pwd=qkrwnsrb1";
             con = new SqlConnection(connectionString);
@@ -49,6 +52,7 @@ namespace SignUpProgram
             //HomeControl's handler;
             homeCtl.sign_up.Click += sign_up_Click;
             homeCtl.login_btn.Click += login_btn_Click;
+            homeCtl.search_id.Click += search_id_Click;
             homeCtl.pwd.KeyDown += pwd_KeyDown;
 
             //SignUpControl's Handlers
@@ -70,26 +74,51 @@ namespace SignUpProgram
             modifyCtl.pwdChange_btn.Click += pwdChange_btn_Click;
             modifyCtl.remove_btn.Click += remove_btn_Click;
 
-
             //PWModifyControl's Handlers
             pwdModifyCtl.pwdChangeSuccess_btn.Click += pwdChangeSuccess_btn_Click;
             pwdModifyCtl.pwdChangeCancel_btn.Click += pwdChangeCancel_btn_Click;
 
+            //SearchControl's Handlers
+            searchCtl.search_btn.Click += search_btn_Click;
+            searchCtl.search_back_btn.Click += search_back_btn_Click;
+            searchCtl.email.KeyDown += email_KeyDown;
 
             Closed += MainWindow_Closed;
         }
 
+        
+
+
+
+
+
+        public void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        public void Button_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        public void ChildrenClear()
+        {
+            mainGrid.Children.Clear();
+            mainGrid.Children.Add(mainCanvas);
+        }
+
+
 
         void MainWindow_Closed(object sender, EventArgs e)
         {
-            MessageBox.Show("This window's being closing");
             con.Close();
         }
 
         //HomeControl's Handlers***********************************
         void sign_up_Click(object sender, RoutedEventArgs e)
         {
-            mainGrid.Children.Clear();
+            ChildrenClear();
             mainGrid.Children.Add(signUpCtl);
         }
 
@@ -105,13 +134,19 @@ namespace SignUpProgram
                 dbProcessor.ChangeUserStateASLoggedIn(con, homeCtl.id.Text);
                 gClasses.ClearTextBoxes(homeCtl.grid);
 
-                mainGrid.Children.Clear();
+                ChildrenClear();
                 mainGrid.Children.Add(mainCtl);
             }
             else //failed to login
             {
             }
         }
+        public void search_id_Click(object sender, RoutedEventArgs e)
+        {
+            ChildrenClear();
+            mainGrid.Children.Add(searchCtl);
+        }
+
 
         public void pwd_KeyDown(object sender, KeyEventArgs e)
         {
@@ -124,7 +159,6 @@ namespace SignUpProgram
         //SignUpControl's Handlers***********************************
         void signUp_btn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("signUp button is clicked");
 
             if (signUpCtl.SignUpProcess(con))//Success creating a user
             {
@@ -134,16 +168,15 @@ namespace SignUpProgram
                 dbProcessor.ChangeUserStateASLoggedIn(con, mainCtl.UserID);
                 gClasses.ClearTextBoxes(signUpCtl.grid);
 
-                mainGrid.Children.Clear();
+                ChildrenClear();
                 mainGrid.Children.Add(mainCtl);
             }
         }
 
         void back_btn_Click(object sender, RoutedEventArgs e)
         {
-            //this.NavigationService.Goback();
-            MessageBox.Show("back button is clicked");
-            mainGrid.Children.Clear();
+            gClasses.ClearTextBoxes(signUpCtl.grid);
+            ChildrenClear();
             mainGrid.Children.Add(homeCtl);
         }
 
@@ -154,13 +187,13 @@ namespace SignUpProgram
             MessageBox.Show(mainCtl.UserID + " 님 감사합니다. 좋은하루 되세요. :)");
             mainCtl.idTitle.Text = String.Empty;
 
-            mainGrid.Children.Clear();
+            ChildrenClear();
             mainGrid.Children.Add(homeCtl);
         }
 
         public void change_btn_Click(object sender, RoutedEventArgs e)
         {
-            mainGrid.Children.Clear();
+            ChildrenClear();
             pwdCheckCtl.Id = mainCtl.UserID;
             mainGrid.Children.Add(pwdCheckCtl);
         }
@@ -173,7 +206,8 @@ namespace SignUpProgram
 
         public void pwdCancel_btn_Click(object sender, RoutedEventArgs e)
         {
-            mainGrid.Children.Clear();
+            gClasses.ClearTextBoxes(pwdCheckCtl.grid);
+            ChildrenClear();
             mainGrid.Children.Add(mainCtl);
         }
 
@@ -187,7 +221,7 @@ namespace SignUpProgram
         {
             if (pwdCheckCtl.PwdCheckProcess(con, mainCtl.UserID, pwdCheckCtl.pwd_check.Password)) //correct pasword
             {
-                mainGrid.Children.Clear();
+                ChildrenClear();
                 modifyCtl.Id = mainCtl.UserID;
                 modifyCtl.SetInformation(con, mainCtl.UserID);
                 mainGrid.Children.Add(modifyCtl);
@@ -199,7 +233,7 @@ namespace SignUpProgram
         {
             if (modifyCtl.UpdateProcess(con, mainCtl.UserID)) //Success modifying information
             {
-                mainGrid.Children.Clear();
+                ChildrenClear();
                 MessageBox.Show("회원정보수정에 성공하였습니다.");
                 mainGrid.Children.Add(mainCtl);
             }
@@ -207,12 +241,12 @@ namespace SignUpProgram
 
         public void modifyCancel_btn_Click(object sender, RoutedEventArgs e)
         {
-            mainGrid.Children.Clear();
+            ChildrenClear();
             mainGrid.Children.Add(mainCtl);
         }
         public void pwdChange_btn_Click(object sender, RoutedEventArgs e)
         {
-            mainGrid.Children.Clear();
+            ChildrenClear();
             pwdModifyCtl.Id = mainCtl.UserID;
             mainGrid.Children.Add(pwdModifyCtl);
         }
@@ -226,7 +260,7 @@ namespace SignUpProgram
                 //remove the id
                 dbProcessor.removeID(con, mainCtl.UserID);
                 MessageBox.Show("계정탈퇴에 성공하였습니다.");
-                mainGrid.Children.Clear();
+                ChildrenClear();
                 mainGrid.Children.Add(homeCtl);
             }
             else
@@ -241,16 +275,76 @@ namespace SignUpProgram
         {
             if (pwdModifyCtl.ModifyProcess(con, mainCtl.UserID))//Success modifying password
             {
-                mainGrid.Children.Clear();
+                ChildrenClear();
                 mainGrid.Children.Add(modifyCtl);
             }
         }
         public void pwdChangeCancel_btn_Click(object sender, RoutedEventArgs e)
         {
-            mainGrid.Children.Clear();
+            modifyCtl.SetInformation(con, mainCtl.UserID);
+            gClasses.ClearTextBoxes(pwdModifyCtl.grid);
+            ChildrenClear();
             mainGrid.Children.Add(modifyCtl);
 
         }
 
+        //SearchControl's Handlers
+        public void search_btn_Click(object sender, RoutedEventArgs e)
+        {
+            searchID();
+            gClasses.ClearTextBoxes(searchCtl.grid);
+        }
+        public void search_back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            gClasses.ClearTextBoxes(searchCtl.grid);
+            ChildrenClear();
+            mainGrid.Children.Add(homeCtl);
+        }
+
+        public void searchID()
+        {
+            if (searchCtl.SearchIDProcess(con))//Success searching your ID
+            {
+                ChildrenClear();
+                mainGrid.Children.Add(homeCtl);
+            }
+        }
+
+        public void email_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                searchID();
+                gClasses.ClearTextBoxes(searchCtl.grid);
+            }
+        }
+
+
+        private void intro1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void intro2_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void intro4_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void intro5_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+        }
     }
 }

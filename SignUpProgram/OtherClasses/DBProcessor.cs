@@ -66,7 +66,6 @@ namespace SignUpProgram
                 }
                 catch (SystemException ex)
                 {
-                    MessageBox.Show(ex.ToString());
                     MessageBox.Show("중복된 아이디입니다.");
                 }
             }
@@ -218,12 +217,6 @@ namespace SignUpProgram
             PhoneInfo phoneInfo = (PhoneInfo)infoList[PHONE];
             EMailInfo emailInfo = (EMailInfo)infoList[EMAIL];
 
-
-            MessageBox.Show(nameInfo.GetInfo());
-            MessageBox.Show(idInfo.GetInfo());
-            MessageBox.Show(phoneInfo.GetInfo());
-            MessageBox.Show(emailInfo.GetInfo());
-
             try
             {
                 SqlCommand cmd = new SqlCommand();
@@ -238,14 +231,14 @@ namespace SignUpProgram
             }
         }
 
-        public void UpdatePassword(SqlConnection con, string paramPwd)
+        public void UpdatePassword(SqlConnection con, string paramID, string paramPwd)
         {
             try
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = "UPDATE INTO Users SET user_passwd = '" + paramPwd + "'";
+                cmd.CommandText = "UPDATE Users SET user_passwd = '" + paramPwd + "' WHERE user_id = '" + paramID + "'";
                 cmd.ExecuteNonQuery();
             }
             catch (SystemException ex)
@@ -271,5 +264,36 @@ namespace SignUpProgram
             }
         }
 
+
+        public Boolean SearchID(SqlConnection con, string paramName, string paramEmail)
+        {
+            string id = null;
+            Boolean rv = false;
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = "SELECT user_id FROM Users WHERE user_name = '" + paramName + "' and user_email = '" + paramEmail + "'";
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    MessageBox.Show("해당 아이디는 \"" + reader["user_id"].ToString() + "\" 입니다.");
+                    rv = true;
+                }
+                else
+                {
+                    MessageBox.Show("아이디를 찾을 수 없습니다.");
+                }
+                reader.Close();
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return rv;
+        }
     }
 }

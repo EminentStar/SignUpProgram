@@ -1,5 +1,7 @@
-﻿using System;
+﻿using SignUpProgram.OtherClasses;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +23,18 @@ namespace SignUpProgram
     public partial class SearchControl : UserControl
     {
         //u can find your ID or password
+        DBProcessor dbProcessor = DBProcessor.GetInstance();
+        GlobalClasses gClasses = GlobalClasses.GetInstance();
+
+
         public SearchControl()
         {
             InitializeComponent();
+        }
+
+        public Boolean SearchIDProcess(SqlConnection con)
+        {
+            return dbProcessor.SearchID(con, name.Text, email.Text );
         }
     }
 }

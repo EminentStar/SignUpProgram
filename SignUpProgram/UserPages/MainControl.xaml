@@ -6,19 +6,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="525">
     <Grid>
-        <TextBlock x:Name="idTitle" HorizontalAlignment="Left" Height="23" Margin="377,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="89"/>
-        <TextBlock HorizontalAlignment="Left" Height="23" Margin="377,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Text="반갑습니다."/>
-        <Button x:Name="logout_btn" HorizontalAlignment="Left" Height="35" Margin="466,20,0,0" VerticalAlignment="Top" Width="32" Background="Transparent" BorderBrush="Transparent">
+        <TextBlock x:Name="idTitle" HorizontalAlignment="Left" Height="23" Margin="308,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="89"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="308,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Text="반갑습니다."/>
+        <Button x:Name="logout_btn" HorizontalAlignment="Left" Height="35" Margin="477,40,0,0" VerticalAlignment="Top" Width="32" Background="Transparent" BorderBrush="Transparent">
             <StackPanel>
                 <Image Source="../img/logout.ico" Height="29" Width="30" RenderTransformOrigin="-0.3,0.759" />
             </StackPanel>
         </Button>
-        <Button x:Name="change_btn" HorizontalAlignment="Left" Height="38" Margin="461,89,0,0" VerticalAlignment="Top" Width="42" Background="Transparent" BorderBrush="Transparent">
+        <Button x:Name="change_btn" HorizontalAlignment="Left" Height="38" Margin="422,40,0,0" VerticalAlignment="Top" Width="42" Background="Transparent" BorderBrush="Transparent">
             <StackPanel>
                 <Image Source="../img/change.ico" Height="32" Width="35" />
             </StackPanel>
         </Button>
-        <TextBlock HorizontalAlignment="Left" Height="52" Margin="468,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35"><Run Text="회원"/><LineBreak/><Run Text="정보"/><LineBreak/><Run Text="수정"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="19" Margin="383,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Text="회원정보수정"/>
+        <TextBlock HorizontalAlignment="Left" Height="19" Margin="463,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52" Text="로그아웃"/>
 
     </Grid>
 </UserControl>

@@ -37,7 +37,6 @@ namespace SignUpProgram
 
         void clear_btn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("clear button is clicked");
             gClasses.ClearTextBoxes(this.grid);
         }
 
